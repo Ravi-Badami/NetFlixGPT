@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { vailidateData } from "../utils/validation";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleSignIn = () => {
     setIsSignUp(!isSignUp);
+  };
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const validateForm = () => {
+    const ravi = vailidateData(email.current.value, password.current.value);
+    setErrorMessage(ravi);
+    // console.log(email.current.value);
+    // console.log(password.current.value);
+    // console.log(ravi);
   };
   return (
     <div className="">
@@ -16,6 +28,7 @@ const Login = () => {
         alt=""
       />
       <form
+        onSubmit={(e) => e.preventDefault()}
         action=""
         className="p-16 my-10 bg-black absolute w-4/12 mt-12 mx-auto left-0 right-0 "
       >
@@ -31,19 +44,26 @@ const Login = () => {
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email address"
           className="p-4 w-full mt-4 rounded-md"
         />
         <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="p-4 w-full mt-4 rounded-md"
         />
-        <button className="  mt-8 py-3 w-full bg-white text-white rounded-md bg-red-600">
+        <p className="text-red-600 mt-6">{errorMessage}</p>
+        {/** Submit button */}
+        <button
+          className="  mt-6 py-3 w-full  text-white rounded-md bg-red-600"
+          onClick={validateForm}
+        >
           {isSignUp ? "Sign Up" : "Sign In"}
         </button>
-        <p className="text-white mt-12  ">
+        <p className="text-white mt-6  ">
           <span className="opacity-50">
             {isSignUp ? " New to Netflix?" : "Already have an account?"}
           </span>
