@@ -1,6 +1,12 @@
+import { useState } from "react";
 import Header from "./Header";
 
 const Login = () => {
+  const [isSignUp, setIsSignUp] = useState(true);
+
+  const toggleSignIn = () => {
+    setIsSignUp(!isSignUp);
+  };
   return (
     <div className="">
       <Header />
@@ -13,8 +19,17 @@ const Login = () => {
         action=""
         className="p-16 my-10 bg-black absolute w-4/12 mt-12 mx-auto left-0 right-0 "
       >
-        <p className="text-white text-3xl">Sign In</p>
+        <p className="text-white text-3xl">
+          {isSignUp ? "Sign Up" : "Sign In"}
+        </p>
 
+        {!isSignUp && (
+          <input
+            type="text"
+            placeholder="Name"
+            className="p-4 w-full mt-4 rounded-md"
+          />
+        )}
         <input
           type="text"
           placeholder="Email address"
@@ -26,8 +41,19 @@ const Login = () => {
           className="p-4 w-full mt-4 rounded-md"
         />
         <button className="  mt-8 py-3 w-full bg-white text-white rounded-md bg-red-600">
-          Sign In
+          {isSignUp ? "Sign Up" : "Sign In"}
         </button>
+        <p className="text-white mt-12  ">
+          <span className="opacity-50">
+            {isSignUp ? " New to Netflix?" : "Already have an account?"}
+          </span>
+          <span
+            className="cursor-pointer hover:underline opacity-100 "
+            onClick={toggleSignIn}
+          >
+            {isSignUp ? "  Sign up now." : " Sign In now."}
+          </span>
+        </p>
       </form>
     </div>
   );
