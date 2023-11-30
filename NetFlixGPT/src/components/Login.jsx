@@ -30,10 +30,10 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="p-16 my-10 bg-black absolute w-4/12 mt-12 mx-auto left-0 right-0 "
+        className="p-16 my-10 bg-black bg-opacity-80 absolute w-4/12 mt-12 mx-auto left-0 right-0 rounded-md"
       >
         <p className="text-white text-3xl">
-          {isSignUp ? "Sign Up" : "Sign In"}
+          {isSignUp ? "Sign In" : "Sign Up"}
         </p>
 
         {!isSignUp && (
@@ -61,7 +61,7 @@ const Login = () => {
           className="  mt-6 py-3 w-full  text-white rounded-md bg-red-600"
           onClick={validateForm}
         >
-          {isSignUp ? "Sign Up" : "Sign In"}
+          {isSignUp ? "Sign In" : "Sign Up"}
         </button>
         <p className="text-white mt-6  ">
           <span className="opacity-50">
@@ -71,7 +71,7 @@ const Login = () => {
             className="cursor-pointer hover:underline opacity-100 "
             onClick={toggleSignIn}
           >
-            {isSignUp ? "  Sign up now." : " Sign In now."}
+            {isSignUp ? "  Sign Up now." : " Sign In now."}
           </span>
         </p>
       </form>
