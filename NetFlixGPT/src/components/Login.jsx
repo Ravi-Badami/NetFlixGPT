@@ -6,10 +6,12 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -33,7 +35,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
+          navigate("/browse");
+          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -52,7 +55,9 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          navigate("/browse");
+
+          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -77,7 +82,7 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="p-16 my-10 bg-black bg-opacity-80 absolute w-4/12 mt-12 mx-auto left-0 right-0 rounded-md"
+        className="p-16 my-10 bg-black sm:bg-red-300   bg-opacity-80 absolute w-4/12 mt-12 mx-auto left-0 right-0 rounded-md"
       >
         <p className="text-white text-3xl">
           {isSignIn ? "Sign In" : "Sign Up"}
