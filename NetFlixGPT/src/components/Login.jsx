@@ -9,6 +9,7 @@ import { auth } from "../utils/firebase";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/authSlice";
+import { BG_IMAGE, PROFILE_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/89252630?v=4",
+            photoURL: PROFILE_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -98,18 +99,10 @@ const Login = () => {
           setErrorMessage(errorCode + "-" + errorMessage);
         });
     }
-
-    // console.log(email.current.value);
-    // console.log(password.current.value);
-    // console.log(message);
   };
   return (
     <div className="">
-      <img
-        className=" w-screen h-screen absolute"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/d1532433-07b1-4e39-a920-0f08b81a489e/67033404-2df8-42e0-a5a0-4c8288b4da2c/IN-en-20231120-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-        alt=""
-      />
+      <img className=" w-screen h-screen absolute" src={BG_IMAGE} alt="" />
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""

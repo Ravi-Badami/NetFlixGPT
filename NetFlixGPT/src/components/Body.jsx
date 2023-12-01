@@ -12,7 +12,7 @@ const Body = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -36,6 +36,8 @@ const Body = () => {
         // ...
       }
     });
+    /** onAuthStateChanged returns a unsubscribe function which can be called when onAuthStateChanged unmounts and when the body will unload it will unsubscribe to the event */
+    return () => unsubscribe();
   }, []);
 
   return (

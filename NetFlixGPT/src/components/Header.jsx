@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
+import { LOGO } from "../utils/constants";
 
 const Header = () => {
   const user = useSelector((store) => store?.auth);
@@ -20,14 +21,10 @@ const Header = () => {
         // ...
       });
   };
-  console.log(user);
+
   return (
     <div className=" absolute  px-9 py-5 w-full bg-gradient-to-b from-black  z-10 flex  justify-between">
-      <img
-        className=" h-14"
-        src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
-        alt=""
-      />
+      <img className=" h-14" src={LOGO} alt="" />
       {
         <div className=" text-white flex items-center ">
           <img
