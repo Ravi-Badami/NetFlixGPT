@@ -1,23 +1,51 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { vailidateData } from "../utils/validation";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
   const toggleSignIn = () => {
-    setIsSignUp(!isSignUp);
+    setIsSignIn(!isSignIn);
   };
   const email = useRef(null);
   const password = useRef(null);
 
   const validateForm = () => {
-    const ravi = vailidateData(email.current.value, password.current.value);
-    setErrorMessage(ravi);
+    const message = vailidateData(email.current.value, password.current.value);
+    setErrorMessage(message);
+    /** if an error message is returned than return from here if null is returned than go ahead */
+    if (message) return;
+    /** !isSignIn=== signup */
+    if (!isSignIn) {
+      /** sign up logic */
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+          // ..
+        });
+    } else {
+      /** Sign in logic */
+    }
+
     // console.log(email.current.value);
     // console.log(password.current.value);
-    // console.log(ravi);
+    // console.log(message);
   };
   return (
     <div className="">
@@ -33,10 +61,10 @@ const Login = () => {
         className="p-16 my-10 bg-black bg-opacity-80 absolute w-4/12 mt-12 mx-auto left-0 right-0 rounded-md"
       >
         <p className="text-white text-3xl">
-          {isSignUp ? "Sign In" : "Sign Up"}
+          {isSignIn ? "Sign In" : "Sign Up"}
         </p>
 
-        {!isSignUp && (
+        {!isSignIn && (
           <input
             type="text"
             placeholder="Name"
@@ -61,17 +89,17 @@ const Login = () => {
           className="  mt-6 py-3 w-full  text-white rounded-md bg-red-600"
           onClick={validateForm}
         >
-          {isSignUp ? "Sign In" : "Sign Up"}
+          {isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <p className="text-white mt-6  ">
           <span className="opacity-50">
-            {isSignUp ? " New to Netflix?" : "Already have an account?"}
+            {isSignIn ? " New to Netflix?" : "Already have an account?"}
           </span>
           <span
             className="cursor-pointer hover:underline opacity-100 "
             onClick={toggleSignIn}
           >
-            {isSignUp ? "  Sign Up now." : " Sign In now."}
+            {isSignIn ? "  Sign Up now." : " Sign In now."}
           </span>
         </p>
       </form>
