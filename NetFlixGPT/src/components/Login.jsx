@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
 import { vailidateData } from "../utils/validation";
 import {
   createUserWithEmailAndPassword,
@@ -7,12 +6,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/redux/authSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -38,12 +40,20 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name,
+            displayName: name.current.value,
             photoURL: "https://avatars.githubusercontent.com/u/89252630?v=4",
           })
             .then(() => {
-              // Profile updated!
-              navigate("/browse");
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              // console.log(uid, email, displayName);
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               // An error occurred
@@ -68,9 +78,18 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
+          console.log(user);
+          const { uid, email, displayName, photoURL } = auth.currentUser;
+          // console.log(uid, email, displayName);
+          dispatch(
+            addUser({
+              uid: uid,
+              email: email,
+              displayName: displayName,
+              photoURL: photoURL,
+            })
+          );
 
-          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -86,7 +105,6 @@ const Login = () => {
   };
   return (
     <div className="">
-      <Header />
       <img
         className=" w-screen h-screen absolute"
         src="https://assets.nflxext.com/ffe/siteui/vlv3/d1532433-07b1-4e39-a920-0f08b81a489e/67033404-2df8-42e0-a5a0-4c8288b4da2c/IN-en-20231120-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
