@@ -4,6 +4,7 @@ import { vailidateData } from "../utils/validation";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,7 @@ const Login = () => {
   };
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const validateForm = () => {
     const message = vailidateData(email.current.value, password.current.value);
@@ -35,7 +37,18 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          navigate("/browse");
+          updateProfile(user, {
+            displayName: name,
+            photoURL: "https://avatars.githubusercontent.com/u/89252630?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
           // console.log(user);
           // ...
         })
@@ -90,6 +103,7 @@ const Login = () => {
 
         {!isSignIn && (
           <input
+            ref={name}
             type="text"
             placeholder="Name"
             className="p-4 w-full mt-4 rounded-md"

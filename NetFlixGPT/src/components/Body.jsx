@@ -5,7 +5,7 @@ import "../index.css";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/redux/authSlice";
 
 const appRouter = createBrowserRouter([
@@ -21,12 +21,15 @@ const appRouter = createBrowserRouter([
 
 const Body = () => {
   const dispatch = useDispatch();
+  const display = useSelector((store) => store.auth);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName } = user;
+        console.log(uid, email, displayName);
         dispatch(
           addUser({
             uid: uid,
@@ -42,6 +45,7 @@ const Body = () => {
       }
     });
   }, []);
+
   return (
     <div className="">
       <RouterProvider router={appRouter} />
