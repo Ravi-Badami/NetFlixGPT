@@ -1,29 +1,7 @@
-import { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addMovies } from "../utils/redux/moviesSlice";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 
 const Browse = () => {
-  const dispatch = useDispatch();
-  const movies = useSelector((store) => store?.movies);
-  console.log(movies?.movies?.results);
-
-  const getMovies = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?page=1",
-      API_OPTIONS
-    );
-
-    const json = await data.json();
-    dispatch(
-      addMovies({
-        movies: json,
-      })
-    );
-  };
-  useEffect(() => {
-    getMovies();
-  }, []);
+  useNowPlayingMovies();
   return (
     <div>
       <div className=" h-screen font-bold flex justify-center items-center">
