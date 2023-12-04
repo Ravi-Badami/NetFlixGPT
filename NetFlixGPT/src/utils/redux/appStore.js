@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
+import moviesReducer from "./moviesSlice";
 const appStore = configureStore({
   reducer: {
     auth: authReducer,
+    movies: moviesReducer,
   },
 });
-// appStore.subscribe(() => {
-//   console.log(appStore.reducer.auth);
-// });
+
 export default appStore;
