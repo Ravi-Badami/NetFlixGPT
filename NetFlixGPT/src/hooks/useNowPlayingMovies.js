@@ -5,8 +5,7 @@ import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((store) => store?.movies);
-  console.log(movies?.movies?.results);
+  // const movies = useSelector((store) => store?.movies);
 
   const getMovies = async () => {
     const data = await fetch(
