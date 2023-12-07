@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 const VideoTitle = ({ movie }) => {
   const displayMovie = movie?.movies.results[0];
   return (

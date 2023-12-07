@@ -2,7 +2,7 @@ import { API_OPTIONS } from "../../utils/constants";
 import { useEffect, useState } from "react";
 const VideoContainer = ({ movieId }) => {
   const [heroVideo, setHeroVideo] = useState("");
-  const [trailerId, setTrailerId] = useState("");
+
   useEffect(() => {
     bgVideo();
   }, []);
@@ -15,12 +15,9 @@ const VideoContainer = ({ movieId }) => {
     const json = await video.json();
     const trailerId = await json?.results?.filter((v) => v?.type === "Trailer");
     if (trailerId !== "") setHeroVideo(trailerId);
-    // console.log(json);
   };
 
   console.log(heroVideo);
-  // setTrailerId(trailer);
-  // console.log(trailerId);
 
   return (
     <div className="h-screen w-[98.9vw] border border-black">

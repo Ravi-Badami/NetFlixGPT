@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import VideoContainer from "./VideoContainer";
 
 const MainSection = ({ movieId }) => {

@@ -6,7 +6,8 @@ import VideoTitle from "./Hero/VideoTitle";
 
 const Browse = () => {
   useNowPlayingMovies();
-  const movie = useSelector((store) => store?.movies);
+  const movie = useSelector((store) => store?.movies?.nowPlayingMovies);
+  // console.log(movie);
   if (!movie) return;
   return (
     <div>
