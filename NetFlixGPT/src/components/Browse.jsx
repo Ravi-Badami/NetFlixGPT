@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-import MainSection from "./Hero/MainSection";
+
 import SecondSection from "./Hero/SecondSection";
 import VideoTitle from "./Hero/VideoTitle";
+import VideoContainer from "./Hero/VideoContainer";
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -12,9 +13,9 @@ const Browse = () => {
   return (
     <div>
       <div className=" h-screen font-bold flex justify-center items-start flex-col overflow-hidden">
-        <MainSection movieId={movie} />
+        <VideoContainer movieId={movie} />
         <div className="absolute h-screen ">
-          {/* <VideoTitle movie={movie} /> */}
+          <VideoTitle movie={movie} />
           {/* <SecondSection /> */}
         </div>
       </div>
