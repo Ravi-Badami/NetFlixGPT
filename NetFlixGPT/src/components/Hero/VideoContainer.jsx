@@ -1,7 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect, useState } from "react";
+import { addId } from "../../utils/redux/moviesSlice";
+
 const VideoContainer = ({ movieId }) => {
   const [heroVideo, setHeroVideo] = useState("");
+  const dispatch = useDispatch();
+  const result = useSelector((store) => store?.movies?.id?.id);
+  console.log(result);
 
   useEffect(() => {
     bgVideo();
@@ -14,7 +20,13 @@ const VideoContainer = ({ movieId }) => {
     );
     const json = await video.json();
     const trailerId = await json?.results?.filter((v) => v?.type === "Trailer");
-    if (trailerId !== "") setHeroVideo(trailerId);
+    const trailerIdKey = trailerId[0].key;
+    if (trailerId !== "")
+      dispatch(
+        addId({
+          id: trailerIdKey,
+        })
+      );
   };
 
   console.log(heroVideo);
@@ -22,12 +34,9 @@ const VideoContainer = ({ movieId }) => {
   return (
     <div className="h-screen w-[98.9vw] border border-black">
       <iframe
-        width="560"
-        height="315"
-        src={"https://www.youtube.com/embed/" + heroVideo[0]?.key}
+        src={"https://www.youtube.com/embed/" + result}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
       ></iframe>
     </div>
   );
