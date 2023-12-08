@@ -34,17 +34,6 @@ const Header = () => {
       <img className=" h-14" src={LOGO} alt="" />
       {authRightButton !== null && (
         <div className=" text-white flex items-center gap-2">
-          <button
-            className=" p-2 rounded-lg ml-2 bg-teal-300 font-bold text-black "
-            onClick={handleToggleGpt}
-          >
-            Search GPT
-          </button>
-          <img
-            src={user?.photoURL}
-            className="h-10 rounded-full"
-            alt="nothing"
-          />
           {!gpt && (
             <p
               className=" p-2 rounded-lg ml-2 bg-red-700 font-bold select-none cursor-pointer"
@@ -53,6 +42,17 @@ const Header = () => {
               Signout
             </p>
           )}
+          <button
+            className=" p-2 rounded-lg ml-2 bg-teal-300 font-bold text-black "
+            onClick={handleToggleGpt}
+          >
+            Search GPT
+          </button>
+          <img
+            src={user?.photoURL}
+            className="h-10 rounded-full  "
+            alt="nothing"
+          />
         </div>
       )}
     </div>
