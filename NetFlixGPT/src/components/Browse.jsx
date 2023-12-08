@@ -1,22 +1,27 @@
 import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-
-import SecondSection from "./Hero/SecondSection";
 import VideoTitle from "./Hero/VideoTitle";
 import VideoContainer from "./Hero/VideoContainer";
+import SecondSection from "./SecondSection/SecondSection";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTopRated from "../hooks/useTopRated";
+import useUpComing from "../hooks/useUpComing";
 
 const Browse = () => {
   useNowPlayingMovies();
-  const movie = useSelector((store) => store?.movies?.nowPlayingMovies);
+  usePopularMovies();
+  useTopRated();
+  useUpComing();
+  const movie = useSelector((store) => store?.movies);
   // console.log(movie);
   if (!movie) return;
   return (
     <div>
       <div className=" h-screen font-bold flex justify-center items-start flex-col overflow-hidden">
         <VideoContainer movieId={movie} />
-        <div className="absolute h-screen ">
+        <div className="absolute h-screen  bg-gradient-to-r from-black flex flex-col   ">
           <VideoTitle movie={movie} />
-          {/* <SecondSection /> */}
+          <SecondSection movie={movie} />
         </div>
       </div>
     </div>

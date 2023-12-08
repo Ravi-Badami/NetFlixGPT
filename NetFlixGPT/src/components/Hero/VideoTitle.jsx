@@ -1,11 +1,11 @@
-import SecondSection from "./SecondSection";
+import SecondSection from "../SecondSection/SecondSection";
 
 const VideoTitle = ({ movie }) => {
-  const displayMovie = movie?.movies.results[0];
+  const displayMovie = movie?.nowPlayingMovies?.movies?.results[0];
   return (
     <div
-      className=" border border-black  h-full flex justify-center flex-col pl-10 pt-32 select-none 
-      bg-gradient-to-r from-black justify-around
+      className="  h-3/4 flex  flex-col pl-12 pt-56 select-none 
+     
     "
     >
       <div className="">
