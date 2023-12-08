@@ -3,13 +3,15 @@ import "../index.css";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/redux/authSlice";
 import Header from "./Header";
+import SearchGpt from "./SearchGPt/SearchGpt";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const gpt = useSelector((store) => store.gpt.toggleSearch);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -43,7 +45,7 @@ const Body = () => {
   return (
     <div className="">
       <Header />
-      <Outlet />
+      {gpt ? <SearchGpt /> : <Outlet />}
     </div>
   );
 };
