@@ -1,18 +1,20 @@
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../../hooks/useMovieTrailer";
-import { useRef } from "react";
 
 const VideoContainer = ({ movieId }) => {
+  const id = movieId?.nowPlayingMovies?.movies?.results[0]?.id;
+  if (id === undefined) return;
+  console.log(id);
+  if (id !== undefined) {
+    useMovieTrailer(id);
+  }
   const result = useSelector((store) => store?.movies?.id?.id);
-  // console.log(result);
-  useMovieTrailer(movieId);
-  const iframeRef = useRef(null);
+  console.log(result);
 
   return (
-    <div className=" w-screen -z-10 border border-white ">
+    <div className=" w-screen  -z-10 border border-white ">
       <iframe
-        ref={iframeRef}
-        className="w-screen h-screen border border-white "
+        className="w-[100%] h-screen border border-white "
         src={
           "https://www.youtube.com/embed/" +
           result +

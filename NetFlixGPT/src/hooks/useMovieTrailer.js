@@ -5,34 +5,38 @@ import { useDispatch } from "react-redux";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
-
+  // if (!movieId) return;
+  // console.log(id);
   useEffect(() => {
     bgVideo();
   }, []);
-  const id = movieId?.nowPlayingMovies?.movies?.results[0]?.id;
-  console.log(id);
-
   const bgVideo = async () => {
     const video = await fetch(
-      "https://api.themoviedb.org/3/movie/" + id + "/videos?language=en-US",
+      "https://api.themoviedb.org/3/movie/" +
+        movieId +
+        "/videos?language=en-US",
       API_OPTIONS
     );
     console.log(video);
-    const json = await video.json();
-    console.log(json);
+    if (video) {
+      const json = await video.json();
+      console.log(json);
 
-    const trailerId = await json?.results?.filter((v) => v?.type === "Trailer");
-    console.log(trailerId);
-
-    const trailerIdKey = trailerId[0].key;
-    // console.log(trailerIdKey);
-
-    if (trailerId !== "")
-      dispatch(
-        addId({
-          id: trailerIdKey,
-        })
+      const trailerId = await json?.results?.filter(
+        (v) => v?.type === "Trailer"
       );
+      console.log(trailerId);
+
+      const trailerIdKey = trailerId[0].key;
+      console.log(trailerIdKey);
+
+      if (trailerId !== "")
+        dispatch(
+          addId({
+            id: trailerIdKey,
+          })
+        );
+    }
   };
 };
 export default useMovieTrailer;

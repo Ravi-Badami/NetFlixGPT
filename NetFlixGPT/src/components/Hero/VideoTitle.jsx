@@ -1,5 +1,3 @@
-import SecondSection from "../SecondSection/SecondSection";
-
 const VideoTitle = ({ movie }) => {
   const displayMovie = movie?.nowPlayingMovies?.movies?.results[0];
   return (
@@ -28,7 +26,6 @@ const VideoTitle = ({ movie }) => {
           </button>
         </div>
       </div>
-      {/* <SecondSection /> */}
     </div>
   );
 };

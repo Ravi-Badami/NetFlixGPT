@@ -8,10 +8,10 @@ import useTopRated from "../hooks/useTopRated";
 import useUpComing from "../hooks/useUpComing";
 
 const Browse = () => {
-  useNowPlayingMovies();
-  usePopularMovies();
-  useTopRated();
-  useUpComing();
+  // useNowPlayingMovies();
+  // usePopularMovies();
+  // useTopRated();
+  // useUpComing();
   const movie = useSelector((store) => store?.movies);
   // console.log(movie);
   if (!movie) return;
