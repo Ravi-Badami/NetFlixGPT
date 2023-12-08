@@ -17,9 +17,9 @@ const Browse = () => {
   if (!movie) return;
   return (
     <div>
-      <div className=" h-screen font-bold flex justify-center items-start flex-col overflow-hidden">
+      <div className=" h-screen font-bold flex justify-center items-start flex-col w-screen">
         <VideoContainer movieId={movie} />
-        <div className="absolute h-screen  bg-gradient-to-r from-black flex flex-col   ">
+        <div className=" absolute h-screen flex flex-col   ">
           <VideoTitle movie={movie} />
           <SecondSection movie={movie} />
         </div>

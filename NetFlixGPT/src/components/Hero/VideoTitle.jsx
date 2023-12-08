@@ -4,7 +4,7 @@ const VideoTitle = ({ movie }) => {
   const displayMovie = movie?.nowPlayingMovies?.movies?.results[0];
   return (
     <div
-      className="  h-3/4 flex  flex-col pl-12 pt-56 select-none 
+      className="  h-4/4 flex  flex-col pl-12 py-52 select-none bg-gradient-to-r from-black
      
     "
     >

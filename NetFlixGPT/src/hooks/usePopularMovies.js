@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addPopularMovies } from "../utils/redux/moviesSlice";
@@ -13,6 +14,8 @@ const usePopularMovies = () => {
     );
 
     const json = await data.json();
+    // console.log(json);
+
     dispatch(
       addPopularMovies({
         movies: json,
