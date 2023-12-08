@@ -2,7 +2,7 @@ const VideoTitle = ({ movie }) => {
   const displayMovie = movie?.nowPlayingMovies?.movies?.results[0];
   return (
     <div
-      className="  h-4/4 flex  flex-col pl-12 py-52 select-none bg-gradient-to-r from-black
+      className="  h-4/4 flex  flex-col pl-12 py-52 select-none bg-gradient-to-r from-black 
      
     "
     >
@@ -14,7 +14,7 @@ const VideoTitle = ({ movie }) => {
           </p>
         </div>
 
-        <div className=" ">
+        <div className="">
           <button className="border border-white py-3 px-5 bg-white text-black rounded-md">
             ▶️ Play
           </button>
