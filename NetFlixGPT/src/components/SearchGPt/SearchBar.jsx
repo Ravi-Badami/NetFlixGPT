@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import language from "../../utils/language";
 import { useRef } from "react";
 import openai from "../../utils/openAI";
 import { API_OPTIONS } from "../../utils/constants";
+import { addMovieDetails } from "../../utils/redux/gptSlice";
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const lang = useSelector((store) => store.config.language);
   const result = useRef(null);
 
@@ -42,6 +44,12 @@ const SearchBar = () => {
       /** The above promise is completed here */
       const finalResult = await Promise.all(moviePromise);
       console.log(finalResult);
+      dispatch(
+        addMovieDetails({
+          movieNames: gptResults,
+          moviesResults: finalResult,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
