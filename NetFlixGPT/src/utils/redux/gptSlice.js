@@ -4,8 +4,8 @@ const getSlice = createSlice({
   name: "gpt",
   initialState: {
     toggleSearch: false,
-    getMoviesNames: {},
-    getMovies: {},
+    getMoviesNames: null,
+    getMovies: null,
   },
   reducers: {
     toggleGpt: (state) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { TMDB_POSTER_URL } from "../../utils/constants";
 
 const VideoCard = ({ thumbnail }) => {
+  if (!thumbnail) return null;
   return (
     <div className="">
       <div className="p-4 ">

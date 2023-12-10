@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import language from "../../utils/language";
 import { useRef } from "react";
-import openai from "../../utils/openAI";
-import { API_OPTIONS } from "../../utils/constants";
-import { addMovieDetails } from "../../utils/redux/gptSlice";
+
 import useGptMovie from "../../hooks/useGptMovie";
 
 const SearchBar = () => {
@@ -16,12 +14,12 @@ const SearchBar = () => {
   };
 
   return (
-    <div className=" mt-24">
-      <form action="" onSubmit={(e) => e.preventDefault()}>
+    <div className=" mt-24 w-screen  text-center   ">
+      <form action="" className="" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={result}
           type="text"
-          className=" px-5 pr-32 py-1 rounded-md h-12 outline-none "
+          className=" px-5 py-1 rounded-md h-12 outline-none  border-2 border-red-200 "
           placeholder={language[lang].placeHolder}
         />
         <button
