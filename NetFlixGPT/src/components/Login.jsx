@@ -110,7 +110,7 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className=" p-10 md:p-16 my-10 bg-black sm:bg-red-300   bg-opacity-80 absolute  w-4/5 md:w-4/12  mt-28 md:mt-12 mx-auto left-0 right-0 rounded-md"
+        className=" p-10 md:p-16 my-10 bg-black    bg-opacity-80 absolute  w-4/5 md:w-4/12  mt-28 md:mt-12 mx-auto left-0 right-0 rounded-md"
       >
         <p className="text-white  text-2xl font-bold md:text-3xl">
           {isSignIn ? "Sign In" : "Sign Up"}
