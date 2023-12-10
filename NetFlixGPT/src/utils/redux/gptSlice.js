@@ -4,11 +4,14 @@ const getSlice = createSlice({
   name: "gpt",
   initialState: {
     toggleSearch: false,
+    home: false,
     getMoviesNames: null,
     getMovies: null,
   },
   reducers: {
-    toggleGpt: (state) => {
+    toggleGpt: (state, action) => {
+      // state.toggleSearch = action.payload;
+
       state.toggleSearch = !state.toggleSearch;
     },
     addMovieDetails: (state, action) => {
@@ -16,8 +19,11 @@ const getSlice = createSlice({
       state.getMoviesNames = movieNames;
       state.getMovies = moviesResults;
     },
+    goBack: (state, action) => {
+      state.home = action.payload;
+    },
   },
 });
 
-export const { toggleGpt, addMovieDetails } = getSlice.actions;
+export const { toggleGpt, addMovieDetails, goBack } = getSlice.actions;
 export default getSlice.reducer;

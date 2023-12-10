@@ -7,9 +7,12 @@ const MovieSuggestion = () => {
   if (getMoviesNames === null) return <div> </div>;
 
   return (
-    <div className="border border-black mt-10 w-screen ">
+    // TODO: Shimmer UI
+    <div className="border border-black mt-10 w-screen flex items-center ">
       <div className=" bg-black p-10 w-[80%]">
-        <div className="text-white">{getMoviesNames}</div>
+        <div className="text-white mb-10 border-b pb-5 border-white">
+          {"Movies = " + getMoviesNames + ", "}
+        </div>
 
         {getMoviesNames.map((movie, index) => (
           <VideoList key={movie} movie={getMovies[index]} title={movie} />

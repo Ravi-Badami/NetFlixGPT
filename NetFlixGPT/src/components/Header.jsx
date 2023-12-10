@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { LOGO, SUPPORT_LANGUAGE } from "../utils/constants";
-import { toggleGpt } from "../utils/redux/gptSlice";
+import { goBack, toggleGpt } from "../utils/redux/gptSlice";
 import { changeLang } from "../utils/redux/configSlice";
+import { useEffect } from "react";
 
 const Header = () => {
   const user = useSelector((store) => store?.auth);
@@ -12,12 +13,30 @@ const Header = () => {
   const dispatch = useDispatch();
   const authRightButton = useSelector((store) => store.auth);
   const gpt = useSelector((store) => store.gpt.toggleSearch);
+  const goBackButton = useSelector((store) => store.gpt.home);
+  useEffect(() => {
+    const handlePopState = () => {
+      // This function will be called when the user clicks the browser's back button
+      // You can add your custom logic for handling the back button here
+      navigate("/browse");
+    };
+
+    // Add the event listener for the popstate event
+    window.addEventListener("popstate", handlePopState);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // dispatch(removeUser());
         navigate("/");
+        window.location.reload();
+
         // User deleted.
       })
       .catch((error) => {
@@ -28,6 +47,7 @@ const Header = () => {
   };
   const handleToggleGpt = () => {
     dispatch(toggleGpt());
+    dispatch(goBack(true));
   };
   const handleLangChange = (e) => {
     dispatch(changeLang(e.target.value));
@@ -40,21 +60,22 @@ const Header = () => {
         <div className=" text-white flex items-center gap-2">
           {gpt ? (
             <div>
-              {" "}
-              <select
-                className="text-black   outline-none px-2 py-1 "
-                onChange={handleLangChange}
-              >
-                {SUPPORT_LANGUAGE.map((lang) => (
-                  <option
-                    key={lang.identifier}
-                    value={lang.identifier}
-                    className="text-black px-2 py-1"
-                  >
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
+              {goBackButton && (
+                <select
+                  className="text-black   outline-none px-2 py-1 "
+                  onChange={handleLangChange}
+                >
+                  {SUPPORT_LANGUAGE.map((lang) => (
+                    <option
+                      key={lang.identifier}
+                      value={lang.identifier}
+                      className="text-black px-2 py-1"
+                    >
+                      {lang.name}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
           ) : (
             <p

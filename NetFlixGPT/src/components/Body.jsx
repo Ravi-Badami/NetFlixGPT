@@ -12,6 +12,7 @@ const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const gpt = useSelector((store) => store.gpt.toggleSearch);
+  const dontGoBack = useSelector((store) => store.gpt.home);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -45,7 +46,7 @@ const Body = () => {
   return (
     <div className="">
       <Header />
-      {gpt ? <SearchGpt /> : <Outlet />}
+      {gpt && dontGoBack ? <SearchGpt /> : <Outlet />}
     </div>
   );
 };
