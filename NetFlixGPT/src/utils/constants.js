@@ -23,5 +23,6 @@ export const SUPPORT_LANGUAGE = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
+// TODO: Ask the open AI key from the user
 const OPENAI_GPT_API = OPENAI_KEY;
 console.log(OPENAI_GPT_API);

@@ -13,8 +13,8 @@ const VideoContainer = ({ movieId }) => {
 
   return (
     <div className=" w-screen  -z-10 border border-white ">
-      <iframe
-        className="w-[100%] h-screen border border-white "
+      {/* <iframe
+        className="w-[100%] h-screen  "
         src={
           "https://www.youtube.com/embed/" +
           result +
@@ -22,7 +22,7 @@ const VideoContainer = ({ movieId }) => {
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe>
+      ></iframe> */}
     </div>
   );
 };

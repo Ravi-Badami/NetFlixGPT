@@ -8,9 +8,9 @@ const MovieSuggestion = () => {
 
   return (
     // TODO: Shimmer UI
-    // TODO: On click to the image of a movie it should show the trailer ,details ,description etc
-    <div className="border border-black mt-10 w-screen flex items-center ">
-      <div className=" bg-black p-10 w-[80%]">
+    // TODO: On click to the image of a movie it should show the trailer details ,description etc
+    <div className="border border-black mt-10   ">
+      <div className=" bg-black p-10  ">
         <div className="text-white mb-10 border-b pb-5 border-white">
           {"Movies = " + getMoviesNames + ", "}
         </div>

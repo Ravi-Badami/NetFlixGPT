@@ -28,11 +28,15 @@ const SearchGpt = () => {
     };
   }, []); // Empty dependency array ensures that this effect runs only once during mount
   return (
-    <div className="absolute flex flex-col w-screen ">
-      <img src={BG_IMAGE} alt="" className="-z-10 absolute w-screen h-screen" />
-      <SearchBar />
-      <MovieSuggestion />
-    </div>
+    <>
+      <div className="fixed top-0 left-0 w-screen h-screen -z-10 ">
+        <img src={BG_IMAGE} alt="" className="h-full w-full object-cover" />
+      </div>
+      <div className="relative ">
+        <SearchBar />
+        <MovieSuggestion />
+      </div>
+    </>
   );
 };
 

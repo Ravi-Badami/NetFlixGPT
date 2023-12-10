@@ -14,8 +14,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div className=" mt-24 w-screen  text-center   ">
-      <form action="" className="" onSubmit={(e) => e.preventDefault()}>
+    <div className=" mt-36 md:mt-24 w-screen  text-center   ">
+      <form action="" className="w-screen" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={result}
           type="text"
@@ -23,7 +23,7 @@ const SearchBar = () => {
           placeholder={language[lang].placeHolder}
         />
         <button
-          className="ml-2  py-1 px-4 font-bold bg-red-700 text-white rounded-md h-12"
+          className="mt-4 md:mt-0 ml-2  py-1 px-4 font-bold bg-red-700 text-white rounded-md h-12"
           onClick={handleSearchOpenAiThis}
         >
           {language[lang].search}

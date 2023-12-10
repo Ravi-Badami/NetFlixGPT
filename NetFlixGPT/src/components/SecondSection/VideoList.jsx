@@ -5,7 +5,7 @@ const VideoList = ({ title, movie }) => {
 
   return (
     <div className=" ">
-      <h1 className="text-md text-white">{title}</h1>
+      <h1 className=" md:text-md text-white ">{title}</h1>
       <div className="flex   py-2 overflow-x-scroll hide-scrollbar">
         <div className="flex  ">
           {movie?.movies?.results.map((m) => (

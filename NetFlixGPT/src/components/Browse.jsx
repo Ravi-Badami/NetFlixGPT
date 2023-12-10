@@ -10,10 +10,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Browse = () => {
-  // useNowPlayingMovies();
-  // usePopularMovies();
-  // useTopRated();
-  // useUpComing();
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTopRated();
+  useUpComing();
   const movie = useSelector((store) => store?.movies);
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const Browse = () => {
   }, []);
   if (!movie) return;
   return (
-    <div>
+    <div className="relative">
       <div className=" h-screen font-bold flex justify-center items-start flex-col w-screen">
         <VideoContainer movieId={movie} />
         <div className=" absolute h-screen flex flex-col   ">

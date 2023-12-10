@@ -54,10 +54,10 @@ const Header = () => {
   };
 
   return (
-    <div className=" absolute  px-9 py-5 w-full bg-gradient-to-b from-black  z-20 flex  justify-between">
-      <img className=" h-14" src={LOGO} alt="" />
+    <div className=" fixed  md:px-9 py-5 w-full bg-gradient-to-b from-black  z-20 flex  justify-between flex-col md:flex-row items-center">
+      <img className=" w-40 md:h-14 mb-4 md:mb-0" src={LOGO} alt="" />
       {authRightButton !== null && (
-        <div className=" text-white flex items-center gap-2">
+        <div className=" text-white flex items-center  gap-2 ">
           {gpt ? (
             <div>
               {goBackButton && (

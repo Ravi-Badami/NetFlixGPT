@@ -44,7 +44,7 @@ const Body = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="overflow-x-hidden ">
       <Header />
       {gpt && dontGoBack ? <SearchGpt /> : <Outlet />}
     </div>

@@ -102,13 +102,13 @@ const Login = () => {
   };
   return (
     <div className="">
-      <img className=" w-screen h-screen absolute" src={BG_IMAGE} alt="" />
+      <img className=" h-screen object-cover absolute" src={BG_IMAGE} alt="" />
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="p-16 my-10 bg-black sm:bg-red-300   bg-opacity-80 absolute w-4/12 mt-12 mx-auto left-0 right-0 rounded-md"
+        className=" p-10 md:p-16 my-10 bg-black sm:bg-red-300   bg-opacity-80 absolute  w-4/5 md:w-4/12  mt-28 md:mt-12 mx-auto left-0 right-0 rounded-md"
       >
-        <p className="text-white text-3xl">
+        <p className="text-white  text-2xl font-bold md:text-3xl">
           {isSignIn ? "Sign In" : "Sign Up"}
         </p>
 
@@ -117,25 +117,25 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Name"
-            className="p-4 w-full mt-4 rounded-md"
+            className="p-2 md:p-4 w-full mt-4 rounded-md text-sm"
           />
         )}
         <input
           ref={email}
           type="text"
           placeholder="Email address"
-          className="p-4 w-full mt-4 rounded-md"
+          className="p-2 md:p-4 w-full mt-4 rounded-md text-sm"
         />
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-4 w-full mt-4 rounded-md"
+          className="p-2 md:p-4 w-full mt-4 rounded-md text-sm"
         />
         <p className="text-red-600 mt-6">{errorMessage}</p>
         {/** Submit button */}
         <button
-          className="  mt-6 py-3 w-full  text-white rounded-md bg-red-600"
+          className="  md:mt-6 py-3 w-full  text-white rounded-md bg-red-600"
           onClick={validateForm}
         >
           {isSignIn ? "Sign In" : "Sign Up"}
