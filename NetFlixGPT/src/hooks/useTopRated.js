@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addTopRatedMovies } from "../utils/redux/moviesSlice";
 import { useEffect } from "react";
 
 const useTopRated = () => {
   const dispatch = useDispatch();
+  const topRated = useSelector((store) => store.movies.nowPlayingMovies);
 
   const getTopRatedMovies = async () => {
     const data = await fetch(
@@ -20,7 +21,9 @@ const useTopRated = () => {
     );
   };
   useEffect(() => {
-    getTopRatedMovies();
+    /** This is memoisation */
+
+    !topRated && getTopRatedMovies();
   }, []);
 };
 

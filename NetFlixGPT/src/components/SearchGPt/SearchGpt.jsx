@@ -10,6 +10,7 @@ const SearchGpt = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
+    // TODO:Remove the data of getMovieNames and getMovie from the redux store if you go back to the browse page
     const handlePopState = () => {
       // This function will be called when the user clicks the browser's back button
       // You can add your custom logic for handling the back button here
