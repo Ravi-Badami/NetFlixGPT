@@ -102,7 +102,11 @@ const Login = () => {
   };
   return (
     <div className="">
-      <img className=" h-screen object-cover absolute" src={BG_IMAGE} alt="" />
+      <img
+        className=" h-full w-full object-cover absolute "
+        src={BG_IMAGE}
+        alt=""
+      />
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
