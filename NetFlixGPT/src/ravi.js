@@ -1,1 +1,1 @@
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "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";
