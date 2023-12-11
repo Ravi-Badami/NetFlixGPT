@@ -1,4 +1,4 @@
-import { OPENAI_KEY } from "../../src/env";
+import { OPENAI_KEY } from "../../src/ravi";
 
 export const LOGO = "https://www.freepnglogos.com/uploads/netflix-logo-0.png";
 export const BG_IMAGE =
