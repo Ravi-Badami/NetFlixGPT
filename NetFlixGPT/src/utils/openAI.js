@@ -1,8 +1,8 @@
-import OpenAI from "openai";
-import { OPENAI_KEY } from "../ravi";
+import OpenAI from 'openai';
+// import { OPENAI_KEY } from '../ravi';
 
 const openai = new OpenAI({
-  apiKey: OPENAI_KEY, // defaults to process.env["OPENAI_API_KEY"]
+  apiKey: import.meta.env.VITE_OPENAPI_KEY, // defaults to process.env["OPENAI_API_KEY"]
   dangerouslyAllowBrowser: true,
 });
 
