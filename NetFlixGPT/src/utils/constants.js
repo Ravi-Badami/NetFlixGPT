@@ -23,4 +23,4 @@ export const SUPPORT_LANGUAGE = [
 
 // TODO: Ask the open AI key from the user
 const OPENAI_GPT_API = import.meta.env.VITE_OPENAPI_KEY;
-console.log(OPENAI_GPT_API);
+// console.log(OPENAI_GPT_API);

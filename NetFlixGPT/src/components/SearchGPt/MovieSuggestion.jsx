@@ -9,7 +9,6 @@ const MovieSuggestion = () => {
   if (getMoviesNames === null) {
     return (
       <div className='mt-10'>
-        {' '}
         <SearchSugesstionShimmer />
         <SearchSugesstionShimmer />
         <SearchSugesstionShimmer />

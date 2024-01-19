@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import VideoCard from './VideoCard';
 import { useDispatch } from 'react-redux';
-import { toggleGpt } from '../../utils/redux/gptSlice';
+import { toggleGpt, toggleSeachFalse } from '../../utils/redux/gptSlice';
 
 const VideoList = ({ title, movie }) => {
   const dispatch = useDispatch();
-  console.log(movie);
+  // console.log(movie);
 
   const handleClick = () => {
-    dispatch(toggleGpt());
+    dispatch(toggleSeachFalse());
+    // dispatch(toggleGpt(true));
   };
 
   return (
