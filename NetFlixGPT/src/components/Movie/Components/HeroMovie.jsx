@@ -1,31 +1,33 @@
 const HeroMovie = () => {
   return (
-    <div className=' h-full'>
+    <div className=' md:h-full'>
       <div className='flex  md:h-full flex-col md:flex-row items-center'>
         <div className='left  md:w-[30%] md:h-[80%]'>
           <div className='  h-full w-full flex justify-center '>
             <img
               src='https://media.themoviedb.org/t/p/w300_and_h450_bestv2/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg'
               alt=''
-              className='rounded-lg  md:h-auto'
+              className='rounded-lg  mt-5 md:mt-0'
             />
           </div>
         </div>
 
-        <div className='h-full  w-[70%] flex items-end'>
+        <div className='h-full md:p-0 p-4 md:w-[70%] flex items-end'>
           <div className='right  w-full flex flex-col gap-2  h-[85%]'>
             {/** title */}
             <div className=''>
-              <p className='text-3xl font-extrabold '>
+              <p className='text-3xl font-extrabold  flex justify-center md:block'>
                 The Marvels <span className='font-medium'>(2023)</span>
               </p>
             </div>
 
             {/** Date */}
-            <div className='flex gap-3 '>
-              <span>11/10/2023</span>
-              <span>science fiction,adventure,Action</span>
-              <span>1h 45m</span>
+            <div className='flex gap-1 md:gap-3 '>
+              <div className='flex gap-1 md:flex-row flex-col'>
+                <span className='bg-gray-100 p-2 rounded-lg'>11/10/2023</span>
+                <span className='bg-gray-100 p-2 rounded-lg'>1h 45m</span>
+              </div>
+              <span className='bg-gray-100 p-2 rounded-lg'>science fiction,adventure,Action</span>
             </div>
 
             {/** rating,playvideo */}
