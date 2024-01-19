@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import useMovieTrailer from "../../hooks/useMovieTrailer";
+import { useSelector } from 'react-redux';
+import useMovieTrailer from '../../hooks/useMovieTrailer';
 
 const VideoContainer = ({ movieId }) => {
   const id = movieId?.nowPlayingMovies?.movies?.results[0]?.id;
@@ -12,8 +12,8 @@ const VideoContainer = ({ movieId }) => {
   console.log(result);
 
   return (
-    <div className=" w-screen  -z-10 border border-white ">
-      <iframe
+    <div className=' w-screen  -z-10 border border-white '>
+      {/* <iframe
         className="w-[100%] h-screen  "
         src={
           "https://www.youtube.com/embed/" +
@@ -22,7 +22,7 @@ const VideoContainer = ({ movieId }) => {
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe>
+      ></iframe> */}
     </div>
   );
 };

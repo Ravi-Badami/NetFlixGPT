@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const getSlice = createSlice({
-  name: "gpt",
+  name: 'gpt',
   initialState: {
     toggleSearch: false,
     home: false,
-    getMoviesNames: null,
-    getMovies: null,
+    getMoviesNames: '',
+    getMovies: '',
   },
   reducers: {
     toggleGpt: (state, action) => {

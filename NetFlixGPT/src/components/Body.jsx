@@ -1,12 +1,12 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import "../index.css";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../utils/redux/authSlice";
-import Header from "./Header";
-import SearchGpt from "./SearchGPt/SearchGpt";
+import { Outlet, useNavigate } from 'react-router-dom';
+
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../utils/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser } from '../utils/redux/authSlice';
+import Header from './Header';
+import SearchGpt from './SearchGPt/SearchGpt';
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -30,11 +30,11 @@ const Body = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        navigate('/browse');
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate("/");
+        navigate('/');
 
         // ...
       }
@@ -44,7 +44,7 @@ const Body = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden ">
+    <div className='overflow-x-hidden '>
       <Header />
       {gpt && dontGoBack ? <SearchGpt /> : <Outlet />}
     </div>
