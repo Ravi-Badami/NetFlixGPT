@@ -5,7 +5,8 @@ import SearchSugesstionShimmer from './Shimmer/SearchSugesstionShimmer';
 const MovieSuggestion = () => {
   const result = useSelector((store) => store.gpt);
   const { getMovies, getMoviesNames } = result;
-  if (!getMoviesNames) {
+
+  if (getMoviesNames === null) {
     return (
       <div className='mt-10'>
         {' '}
@@ -16,7 +17,7 @@ const MovieSuggestion = () => {
       </div>
     );
   }
-  // if (!getMoviesNames) return;
+  if (!getMoviesNames) return;
 
   return (
     // TODO: Shimmer UI
