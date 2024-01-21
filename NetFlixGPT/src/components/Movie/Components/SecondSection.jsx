@@ -1,6 +1,13 @@
 import React from 'react';
+import ImageComponent from './ImageComponent';
 
-const SecondSection = () => {
+const SecondSection = ({ castAndCrewDetails, recommendation }) => {
+  console.log(recommendation);
+  if (!castAndCrewDetails) return;
+
+  const { cast } = castAndCrewDetails;
+  const { results } = recommendation;
+  console.log(cast);
   return (
     <div className='h-screen  p-5 mt-16 md:mt-0 '>
       <div className='h-full'>
@@ -11,34 +18,35 @@ const SecondSection = () => {
                 <p className='text-3xl font-extrabold '>Top Billed Cast</p>
                 <div className='flex  overflow-x-scroll hide-scrollbar mt-5'>
                   <div className='flex gap-5  '>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
-                    <div className='h-52 w-36 bg-gray-400'></div>
+                    {cast.map((card) => (
+                      <div key={card.id} className='text-center'>
+                        {card.profile_path !== null && (
+                          <ImageComponent imageId={card.profile_path} h={52} w={36} />
+                        )}
+                        {card.profile_path !== null && <p className='font-medium'> {card.name}</p>}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div className='text-3xl font-extrabold'>
-                <p>Recommendations</p>
-                <div className=''>
-                  <div className='flex  overflow-x-scroll hide-scrollbar mt-5'>
-                    <div className='flex gap-5  '>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
-                      <div className='h-24 w-36 rounded-xl bg-gray-400'></div>
+              {recommendation.total_results > 0 && (
+                <div className='text-3xl font-extrabold'>
+                  <p>Recommendations</p>
+                  <div className=''>
+                    <div className='flex  overflow-x-scroll hide-scrollbar mt-5'>
+                      <div className='flex gap-5  '>
+                        {results.map((card) => (
+                          <div key={card.id} className='text-center'>
+                            {card.poster_path !== null && (
+                              <ImageComponent imageId={card.poster_path} h={24} w={36} />
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           <div className='right md:w-[25%] h-full  md:mt-0'>

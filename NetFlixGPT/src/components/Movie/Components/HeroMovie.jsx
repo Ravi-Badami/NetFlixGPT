@@ -1,11 +1,25 @@
-const HeroMovie = () => {
+/* eslint-disable react/prop-types */
+const HeroMovie = ({
+  title,
+  tagline,
+  vote_count,
+  vote_average,
+  release_date,
+  hour,
+  min,
+  genres,
+  overview,
+  poster_path,
+}) => {
+  if (!release_date) return;
+  const date = release_date.split('-');
   return (
     <div className=' md:h-full'>
       <div className='flex  md:h-full flex-col md:flex-row items-center'>
         <div className='left  md:w-[30%] md:h-[80%]'>
           <div className='  h-full w-full flex justify-center '>
             <img
-              src='https://media.themoviedb.org/t/p/w300_and_h450_bestv2/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg'
+              src={'https://media.themoviedb.org/t/p/w300_and_h450_bestv2' + poster_path}
               alt=''
               className='rounded-lg  mt-5 md:mt-0'
             />
@@ -17,24 +31,29 @@ const HeroMovie = () => {
             {/** title */}
             <div className=''>
               <p className='text-3xl font-extrabold  flex justify-center md:block'>
-                The Marvels <span className='font-medium'>(2023)</span>
+                {title} <span className='font-medium'>({date[0]})</span>
               </p>
             </div>
 
             {/** Date */}
             <div className='flex gap-1 md:gap-3 '>
               <div className='flex gap-1 md:flex-row flex-col'>
-                <span className='bg-gray-100 p-2 rounded-lg'>11/10/2023</span>
-                <span className='bg-gray-100 p-2 rounded-lg'>1h 45m</span>
+                <span className='bg-gray-100 p-2 rounded-lg'>
+                  {date[2] + '/' + date[1] + '/' + date[0]}
+                </span>
+                <span className='bg-gray-100 p-2 rounded-lg'>{hour + 'h ' + min + 'm'}</span>
               </div>
-              <span className='bg-gray-100 p-2 rounded-lg'>science fiction,adventure,Action</span>
+              <span className='bg-gray-100 p-2 rounded-lg'>
+                {' '}
+                {genres.map((genre) => genre.name).join(',')}
+              </span>
             </div>
 
             {/** rating,playvideo */}
             <div className='flex items-center gap-10 mt-4'>
               <div className='flex items-center gap-2'>
-                <p className='h-16 w-16 rounded-full bg-gray-300 flex items-center justify-center text-3xl'>
-                  64
+                <p className='h-16 w-16 rounded-full bg-gray-300 flex items-center justify-center text-2xl'>
+                  {vote_average.toFixed(0)} <span className='text-sm'>%</span>
                 </p>
                 <span className='font-medium text-sm'>
                   User
@@ -44,7 +63,7 @@ const HeroMovie = () => {
               </div>
               <span className='flex items-end'>
                 <img src='https://www.svgrepo.com/show/513408/star.svg' className='h-10' alt='' />
-                <p>800</p>
+                <p>{vote_count}</p>
               </span>
               <span className='flex items-center'>
                 <img
@@ -57,20 +76,12 @@ const HeroMovie = () => {
             </div>
 
             {/** tagline */}
-            <div className='mt-4'>Higher,future,faster,together</div>
+            <div className='mt-4'>{tagline}</div>
 
             {/** overview */}
             <div className=''>
               <p className='text-3xl font-bold'>Overview</p>
-              <p className='w-[90%]'>
-                Carol Danvers, aka Captain Marvel, has reclaimed her identity from the tyrannical
-                Kree and taken revenge on the Supreme Intelligence. But unintended consequences see
-                Carol shouldering the burden of a destabilized universe. When her duties send her to
-                an anomalous wormhole linked to a Kree revolutionary, her powers become entangled
-                with that of Jersey City super-fan Kamala Khan, aka Ms. Marvel, and Carol’s
-                estranged niece, now S.A.B.E.R. astronaut Captain Monica Rambeau. Together, this
-                unlikely trio must team up and learn to work in concert to save the universe.
-              </p>
+              <p className='w-[90%]'>{overview}</p>
             </div>
 
             {/** crew */}

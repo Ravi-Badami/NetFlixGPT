@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 const VideoTitle = ({ movie }) => {
   const displayMovie = movie?.nowPlayingMovies?.movies?.results[0];
+  if (!displayMovie) return;
   return (
     <div
       className='  h-4/4 flex  flex-col pl-12 py-52 select-none bg-gradient-to-r from-black 
