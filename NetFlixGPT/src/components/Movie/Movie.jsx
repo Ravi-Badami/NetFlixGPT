@@ -27,6 +27,10 @@ const Movie = () => {
     genres,
     overview,
     poster_path,
+    status,
+    revenue,
+    original_language,
+    budget,
   } = movieDetails;
   const { rhours, rmin } = useTime(runtime);
 
@@ -45,7 +49,14 @@ const Movie = () => {
           overview={overview}
           poster_path={poster_path}
         />
-        <SecondSection castAndCrewDetails={castAndCrewDetails} recommendation={recommendation} />
+        <SecondSection
+          castAndCrewDetails={castAndCrewDetails}
+          recommendation={recommendation}
+          status={status}
+          revenue={revenue}
+          original_language={original_language}
+          budget={budget}
+        />
       </div>
     </div>
   );
