@@ -9,13 +9,12 @@ const SecondSection = ({
   original_language,
   budget,
 }) => {
-  console.log(recommendation);
   if (!castAndCrewDetails || !recommendation)
     return <div className='h-screen w-screen bg-red-500'>loading</div>;
 
   const { cast } = castAndCrewDetails;
   const { results } = recommendation;
-  console.log(cast);
+
   return (
     <div className='h-screen  p-5 mt-16 md:mt-0 '>
       <div className='h-full'>

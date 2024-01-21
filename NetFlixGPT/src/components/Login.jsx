@@ -41,7 +41,7 @@ const Login = () => {
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              // console.log(uid, email, displayName);
+
               dispatch(
                 addUser({
                   uid: uid,
@@ -55,7 +55,7 @@ const Login = () => {
               // An error occurred
               setErrorMessage(error.message);
             });
-          // console.log(user);
+
           // ...
         })
         .catch((error) => {
@@ -70,9 +70,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           const { uid, email, displayName, photoURL } = auth.currentUser;
-          // console.log(uid, email, displayName);
+
           dispatch(
             addUser({
               uid: uid,

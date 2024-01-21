@@ -17,8 +17,6 @@ const Browse = () => {
   const movie = useSelector((store) => store?.movies);
   const navigate = useNavigate();
 
-  // console.log(movie);
-
   useEffect(() => {
     const handlePopState = () => {
       // This function will be called when the user clicks the browser's back button

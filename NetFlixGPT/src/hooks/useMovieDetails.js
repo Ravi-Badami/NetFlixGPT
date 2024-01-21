@@ -4,7 +4,7 @@ import { API_OPTIONS } from '../utils/constants';
 
 const useMovieDetails = (id) => {
   const [data, setData] = useState('');
-  console.log(id);
+
   useEffect(() => {
     fetchMovieDetails();
   }, [id]);
@@ -18,7 +18,6 @@ const useMovieDetails = (id) => {
     setData(json);
   };
 
-  console.log(data);
   return data;
 };
 

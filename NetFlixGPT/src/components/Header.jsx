@@ -1,11 +1,11 @@
-import { signOut } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/firebase";
-import { LOGO, SUPPORT_LANGUAGE } from "../utils/constants";
-import { goBack, toggleGpt } from "../utils/redux/gptSlice";
-import { changeLang } from "../utils/redux/configSlice";
-import { useEffect } from "react";
+import { signOut } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../utils/firebase';
+import { LOGO, SUPPORT_LANGUAGE } from '../utils/constants';
+import { goBack, toggleGpt } from '../utils/redux/gptSlice';
+import { changeLang } from '../utils/redux/configSlice';
+import { useEffect } from 'react';
 
 const Header = () => {
   const user = useSelector((store) => store?.auth);
@@ -18,15 +18,15 @@ const Header = () => {
     const handlePopState = () => {
       // This function will be called when the user clicks the browser's back button
       // You can add your custom logic for handling the back button here
-      navigate("/browse");
+      navigate('/browse');
     };
 
     // Add the event listener for the popstate event
-    window.addEventListener("popstate", handlePopState);
+    window.addEventListener('popstate', handlePopState);
 
     // Cleanup the event listener when the component is unmounted
     return () => {
-      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
@@ -34,14 +34,13 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         // dispatch(removeUser());
-        navigate("/");
+        navigate('/');
         window.location.reload();
 
         // User deleted.
       })
       .catch((error) => {
         // An error ocurred
-        console.log(error);
         // ...
       });
   };
@@ -54,23 +53,21 @@ const Header = () => {
   };
 
   return (
-    <div className=" fixed  md:px-9 py-5 w-full bg-gradient-to-b from-black  z-20 flex  justify-between flex-col md:flex-row items-center">
-      <img className=" w-40 md:h-14 mb-4 md:mb-0" src={LOGO} alt="" />
+    <div className=' fixed  md:px-9 py-5 w-full bg-gradient-to-b from-black  z-20 flex  justify-between flex-col md:flex-row items-center'>
+      <img className=' w-40 md:h-14 mb-4 md:mb-0' src={LOGO} alt='' />
       {authRightButton !== null && (
-        <div className=" text-white flex items-center  gap-2 ">
+        <div className=' text-white flex items-center  gap-2 '>
           {gpt ? (
             <div>
               {goBackButton && (
                 <select
-                  className="text-black   outline-none px-2 py-1 "
-                  onChange={handleLangChange}
-                >
+                  className='text-black   outline-none px-2 py-1 '
+                  onChange={handleLangChange}>
                   {SUPPORT_LANGUAGE.map((lang) => (
                     <option
                       key={lang.identifier}
                       value={lang.identifier}
-                      className="text-black px-2 py-1"
-                    >
+                      className='text-black px-2 py-1'>
                       {lang.name}
                     </option>
                   ))}
@@ -79,23 +76,17 @@ const Header = () => {
             </div>
           ) : (
             <p
-              className=" p-2 rounded-lg ml-2 bg-red-700 font-bold select-none cursor-pointer"
-              onClick={handleSignOut}
-            >
+              className=' p-2 rounded-lg ml-2 bg-red-700 font-bold select-none cursor-pointer'
+              onClick={handleSignOut}>
               Signout
             </p>
           )}
           <button
-            className=" p-2 rounded-lg ml-2 bg-teal-300 font-bold text-black "
-            onClick={handleToggleGpt}
-          >
+            className=' p-2 rounded-lg ml-2 bg-teal-300 font-bold text-black '
+            onClick={handleToggleGpt}>
             Search GPT
           </button>
-          <img
-            src={user?.photoURL}
-            className="h-10 rounded-full  "
-            alt="nothing"
-          />
+          <img src={user?.photoURL} className='h-10 rounded-full  ' alt='nothing' />
         </div>
       )}
     </div>

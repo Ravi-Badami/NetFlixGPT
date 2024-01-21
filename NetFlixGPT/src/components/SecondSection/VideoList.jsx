@@ -5,7 +5,6 @@ import { toggleGpt, toggleSeachFalse } from '../../utils/redux/gptSlice';
 
 const VideoList = ({ title, movie }) => {
   const dispatch = useDispatch();
-  // console.log(movie);
 
   const handleClick = () => {
     dispatch(toggleSeachFalse());

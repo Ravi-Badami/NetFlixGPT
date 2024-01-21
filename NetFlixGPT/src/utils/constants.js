@@ -22,7 +22,3 @@ export const SUPPORT_LANGUAGE = [
   { identifier: 'hindi', name: 'Hindi' },
   { identifier: 'spanish', name: 'Spanish' },
 ];
-
-// TODO: Ask the open AI key from the user
-const OPENAI_GPT_API = import.meta.env.VITE_OPENAPI_KEY;
-// console.log(OPENAI_GPT_API);

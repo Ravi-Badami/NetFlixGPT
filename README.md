@@ -6,6 +6,15 @@ NetflixGPT is a project that combines the popular streaming service Netflix with
 
 Explore the live demo of NetflixGPT: [NetflixGPT Demo](https://netflixgptpro.vercel.app/)
 
+## Getting Started
+
+To run the NetflixGPT project locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/Ravi-Badami/NetFlixGPT.git`
+2. Navigate to the project directory: `cd netflixgpt`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+
 ## Features
 
 ### 1. Netflix-Like Streaming Experience
@@ -35,17 +44,6 @@ Stay updated with the latest trends and popular content. Explore curated section
 ### 9. Interactive User Interface
 
 Interact with an intuitive and interactive user interface that enhances the overall streaming experience. Accessible controls, smooth transitions, and engaging visuals make NetflixGPT a pleasure to use.
-
-## Getting Started
-
-To run the NetflixGPT project locally, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/Ravi-Badami/NetFlixGPT.git`
-2. Navigate to the project directory: `cd netflixgpt`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
-
-Visit `https://netflixgptpro.vercel.app/` in your web browser to explore the NetflixGPT clone.
 
 ## Contributing
 

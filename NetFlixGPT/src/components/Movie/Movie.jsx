@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { API_OPTIONS } from '../../utils/constants';
 import { useParams } from 'react-router-dom';
 import useMovieDetails from '../../hooks/useMovieDetails';
 import HeroMovie from './Components/HeroMovie';
@@ -10,16 +8,13 @@ import useRecommendation from '../../hooks/useRecommendation';
 
 const Movie = () => {
   const { movieId } = useParams();
-  // console.log(movieId);
   const castAndCrewDetails = useCastDetails(movieId);
-
   const id = movieId;
-
   const movieDetails = useMovieDetails(id);
-
   const recommendation = useRecommendation(id);
-  if (!movieDetails) return console.log('loading');
-  console.log('loaded');
+
+  if (!movieDetails) return;
+
   const {
     title,
     tagline,
@@ -35,6 +30,7 @@ const Movie = () => {
     original_language,
     budget,
   } = movieDetails;
+
   const { rhours, rmin } = useTime(runtime);
 
   return (
