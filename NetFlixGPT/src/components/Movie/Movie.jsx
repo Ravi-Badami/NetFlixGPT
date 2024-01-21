@@ -10,13 +10,16 @@ import useRecommendation from '../../hooks/useRecommendation';
 
 const Movie = () => {
   const { movieId } = useParams();
+  // console.log(movieId);
   const castAndCrewDetails = useCastDetails(movieId);
 
   const id = movieId;
-  console.log(id);
+
   const movieDetails = useMovieDetails(id);
+
   const recommendation = useRecommendation(id);
-  if (!movieDetails) return;
+  if (!movieDetails) return console.log('loading');
+  console.log('loaded');
   const {
     title,
     tagline,
@@ -48,6 +51,7 @@ const Movie = () => {
           genres={genres}
           overview={overview}
           poster_path={poster_path}
+          castAndCrewDetails={castAndCrewDetails}
         />
         <SecondSection
           castAndCrewDetails={castAndCrewDetails}

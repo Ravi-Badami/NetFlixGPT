@@ -5,7 +5,7 @@ const useCastDetails = (id) => {
   const [data, setData] = useState();
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const fetchData = async () => {
     const data = await fetch(

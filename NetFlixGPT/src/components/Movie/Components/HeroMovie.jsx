@@ -1,3 +1,5 @@
+import useCrewData from '../../../hooks/useCrewData';
+
 /* eslint-disable react/prop-types */
 const HeroMovie = ({
   title,
@@ -10,7 +12,12 @@ const HeroMovie = ({
   genres,
   overview,
   poster_path,
+  castAndCrewDetails,
 }) => {
+  if (!castAndCrewDetails) return;
+  const { crew } = castAndCrewDetails;
+
+  const crewData = useCrewData(crew);
   if (!release_date) return;
   const date = release_date.split('-');
   return (
@@ -87,16 +94,16 @@ const HeroMovie = ({
             {/** crew */}
             <div className='mt-4 flex  w-[70%] justify-between'>
               <span>
-                <p className='font-extrabold text-xl'>Ravi</p>
-                <p>Director</p>
+                <p className='font-bold text-lg'>{crewData[0]}</p>
+                <p>Editing</p>
               </span>
               <span>
-                <p className='font-extrabold text-xl'>Ravi</p>
-                <p>Director</p>
+                <p className='font-bold text-lg'>{crewData[1]}</p>
+                <p>Writing</p>
               </span>
               <span>
-                <p className='font-extrabold text-xl'>Ravi</p>
-                <p>Director</p>
+                <p className='font-bold text-lg'>{crewData[2]}</p>
+                <p>Directing</p>
               </span>
             </div>
           </div>
