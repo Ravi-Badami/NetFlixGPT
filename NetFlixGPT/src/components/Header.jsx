@@ -76,13 +76,13 @@ const Header = () => {
             </div>
           ) : (
             <p
-              className=' p-2 rounded-lg ml-2 bg-red-700 font-bold select-none cursor-pointer'
+              className=' p-2 rounded-md ml-2 bg-red-700 font-bold select-none cursor-pointer'
               onClick={handleSignOut}>
               Signout
             </p>
           )}
           <button
-            className=' p-2 rounded-lg ml-2 bg-teal-300 font-bold text-black '
+            className=' p-2 rounded-md ml-2 bg-teal-300 font-bold text-black '
             onClick={handleToggleGpt}>
             Search GPT
           </button>

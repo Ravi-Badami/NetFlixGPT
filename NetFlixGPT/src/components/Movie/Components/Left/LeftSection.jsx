@@ -3,7 +3,7 @@ import ImageComponent from '../ImageComponent';
 
 const LeftSection = ({ cast, recommendation, results }) => {
   return (
-    <div className='left md:w-[75%] h-full mt-5 md:mt-0 '>
+    <div className='left md:w-[75%] h-full mt-5 md:mt-0  -mb-72'>
       <div className='md:p-5 flex flex-col  gap-5 md:gap-16'>
         <div className=''>
           <p className='text-3xl font-extrabold '>Top Billed Cast</p>

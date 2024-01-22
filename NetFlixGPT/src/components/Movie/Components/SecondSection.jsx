@@ -16,7 +16,7 @@ const SecondSection = ({
   const { results } = recommendation;
 
   return (
-    <div className='h-screen  p-5 mt-16 md:mt-0 '>
+    <div className='h-screen  p-5  md:mt-0 '>
       <div className='h-full'>
         <div className='flex h-full w-full flex-col-reverse md:flex-row'>
           <LeftSection cast={cast} results={results} recommendation={recommendation} />

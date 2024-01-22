@@ -1,6 +1,6 @@
 const RightSection = ({ status, revenue, original_language, budget }) => {
   return (
-    <div className='right md:w-[25%] h-full  md:mt-0'>
+    <div className='right md:w-[25%] h-full  md:mt-0 '>
       <div className='  md:p-5'>
         <div className='Social media flex   gap-5 '>
           <a href='https://twitter.com/RaviBadamipvt'>
