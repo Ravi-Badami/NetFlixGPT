@@ -72,13 +72,13 @@ const HeroMovie = ({
                 <img src='https://www.svgrepo.com/show/513408/star.svg' className='h-10' alt='' />
                 <p>{vote_count}</p>
               </span>
-              <span className='flex items-center'>
+              <span className='flex items-center bg-gray-300 drop-shadow-xl shadow-gray-500 cursor-pointer font-medium px-3 py-1 rounded-full'>
                 <img
                   src='https://www.svgrepo.com/show/393204/triangle-right-filled.svg'
                   className='h-10'
                   alt=''
                 />
-                <p>Play Trailer</p>
+                <p className=''>Play Trailer</p>
               </span>
             </div>
 
